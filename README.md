@@ -1,4 +1,4 @@
-# note : i am using ROS noetic
+note : i am using ROS noetic
 
 ## Install ROS on Remote PC
 ```
@@ -53,9 +53,13 @@ $ sudo apt install ros-noetic-turtlebot3
 
 ## Launch Simulation World in Gazebo
 you can choose one of these:
-1- Empty World
-2-TurtleBot3 World
-3-TurtleBot3 House
+
+1. Empty World
+   
+2.TurtleBot3 World
+  
+3.TurtleBot3 House 
+
 for me, i have choose the second one so i will run this command
 
 ```
@@ -67,5 +71,34 @@ $ roslaunch turtlebot3_gazebo turtlebot3_world.launch
 
 
 ## Opening SLAM
+```
+roslaunch turtlebot3_slam turtlebot3_slam.launch slam_methods:=gmapping
+```
 
+<img width="1398" alt="88" src="https://github.com/user-attachments/assets/e7ddcd40-6a8c-4f18-bb72-1b85f581c149">
+
+create a map and save it
+```
+rosrun map_server map_saver -f ~/map
+```
+then run this command:
+```
+roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+```
+
+
+<img width="1052" alt="89" src="https://github.com/user-attachments/assets/706387dc-80f4-4584-b85a-a2db67a8d93d">
+
+## navigation
+start the navigation and load the saved map, using this command:
+```
+roslaunch turtlebot3_navigation turtlebot3_navigation.launch map_file:='/home/muh/map.yaml'
+```
+
+<img width="685" alt="90" src="https://github.com/user-attachments/assets/308a42e4-aaf7-45d9-be9f-dfd693290f67">
+
+now You can then move the robot !
+
+
+<img width="440" alt="image" src="https://github.com/user-attachments/assets/ea6b0965-98b3-4cbf-a873-f97680e73edc">
 
